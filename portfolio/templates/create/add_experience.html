@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid">
+        <div class="home_data">
+            <span class="home_greetings">dumb fuck</span>
+
+            <h1>Create</h1>
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">create</button>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
