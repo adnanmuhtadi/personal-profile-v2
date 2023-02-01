@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!--
+        <h1> Adnan Portfolio </h1>
+
+        {% load static %}
+
+        <br>
+
+
+        <img src="{% static 'portfolio/about.jpg' %}">
+
+        {% for project in projects %}
+
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+        <img src="{{ project.image.url }}" height=40 width=40>
+        {% if project.url %}
+        <a href="{{ project.url }}">Link</a>
+        {% endif %}
+
+        {% endfor %}
+        -->
+<!-- ========== HOME ========== -->
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid">
+        <div class="home_data">
+            <span class="home_greetings">Hello, My name is</span>
+            <h1 class="home_name">Adnan Muhtadi</h1>
+            <p>I am a, <span class="home_professional typed-text"></span><span class="cursor blink">&nbsp;</span>
+            </p>
+
+            <a href="{{ MEDIA_URL }}pdf/adnanmuhtadicv.pdf" class="button button-light home_button"
+                target="_blank">Download
+                CV</a>
+        </div>
+
+        <div class="home_social">
+            <a href="https://www.facebook.com/adnan.muhtadi/" class="home_social-icon"><i
+                    class="bx bxl-facebook-square"></i></a>
+            <a href="https://www.instagram.com/adnanmuhtadi/" class="home_social-icon"><i
+                    class="bx bxl-instagram"></i></a>
+            <a href="https://twitter.com/adnanmuhtadi" class="home_social-icon"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/adnan-muhtadi-3588243b/" class="home_social-icon"><i
+                    class="bx bxl-linkedin"></i></a>
+            <a href="https://github.com/adnanmuhtadi" class="home_social-icon"><i class="bx bxl-github"></i></a>
+        </div>
+        {% for mainpicture in mainpictures %}
+        <div class="home_img">
+            <!--<img src="{% static '../media/images/home.jpg' %}" alt="">-->
+            <img src="{{ mainpicture.image.url }}" alt="">
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="about section bd-container " id="about">
+    <div data-aos="fade-down">
+        <span class="section-subtitle">My History</span>
+        <div class="blue-line-sub"></div>
+    </div>
+    <div data-aos="zoom-in">
+        <h2 class="section-title">About Me</h2>
+        <div class="blue-line"></div>
+    </div>
+
+    <div class="about_container bd-grid">
+        <div class="about_data bd-grid">
+            <!--
+                            <p class="about_description" data-aos="fade-up">
+                                Product Manager by day, Freelance Developer by night. Best described as a person
+                                who is a <strong>"Jack of all trades but a master of none, but often better than a master of
+                                    one".</strong> Being self-taught and self-driven but still enjoy helping where I can.
+                            </p>
+                        -->
+
+            <div data-aos="zoom-in">
+                <span class="about_number">6</span>
+                <span class="about_achievement">Years of Product Management Experience</span>
+            </div>
+
+            <div data-aos="zoom-in">
+                <span class="about_number">4</span>
+                <span class="about_achievement">Years of Web Development Experience</span>
+            </div>
+
+            <div data-aos="zoom-in">
+                <span class="about_number">{{ projects.count }}</span>
+                <span class="about_achievement">Project{{ projects.count|pluralize }} Completed</span>
+            </div>
+        </div>
+        {% for aboutpicture in aboutpictures %}
+        <img src="{{ aboutpicture.image.url }}" class="about_img" data-aos="fade-up">
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ========== QUALIFICATION ========== -->
+<section class="qualification section bd-container">
+    <div data-aos="fade-down">
+        <span class="section-subtitle">Experience & Education</span>
+        <div class="blue-line-sub"></div>
+    </div>
+    <div data-aos="zoom-in">
+        <h2 class="section-title">Qualification</h2>
+        <div class="blue-line"></div>
+    </div>
+
+    <div class="qualification_container bd-grid">
+        <div class="qualification_content">
+            <h2 class="qualification_title" data-aos="fade-up">
+                <i class="bx bx-briefcase-alt qualification_title-icon"></i>
+                Work Experience
+            </h2>
+
+            <div class="bd-grid">
+                <!-- Job 1 -->
+                {% for experience in experiences %}
+                <div class="qualification_data" data-aos="fade-up">
+                    <h3 class="qualification_area">{{ experience.title }}</h3>
+
+                    <div class="qualification_box">
+                        <span class="qualification_work">
+                            <i class="bx bx-briefcase-alt qualification_icon"></i>
+                            {{ experience.company }} - {{ experience.location }}
+                        </span>
+
+                        <span class="qualification_work">
+                            <i class="bx bx-calendar-alt qualification_icon"></i>
+                            {{ experience.start_date|date:'M Y' }}
+                            {% if experience.finished_date %}
+                            - {{ experience.finished_date|date:'M Y' }}
+                            {% else %}
+                            - Present
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <a href="{{ MEDIA_URL }}pdf/adnanmuhtadicv.pdf" class="button button-light button-more" target="_blank"
+                    data-aos="zoom-in">View
+                    More</a>
+
+            </div>
+        </div>
+
+        <div class="qualification_content">
+            <h2 class="qualification_title" data-aos="fade-up">
+                <i class="bx bx-briefcase-alt qualification_title-icon"></i>
+                Education/Qualification
+            </h2>
+
+            <div class="bd-grid">
+                <!-- Qualification 1 -->
+                {% for qualification in qualifications %}
+                <div class="qualification_data" data-aos="fade-up">
+                    <h3 class="qualification_area">{{ qualification.title }}</h3>
+
+                    <div class="qualification_box">
+                        <span class="qualification_work">
+                            <i class="bx bx-book-bookmark qualification_icon"></i>
+                            {{ qualification.from_where }}
+                        </span>
+
+                        <span class="qualification_work">
+                            <i class="bx bx-calendar-alt qualification_icon"></i>
+                            {{ qualification.completed_date|date:'M Y' }}
+                        </span>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <a href="{{ MEDIA_URL }}pdf/adnanmuhtadicv.pdf" class="button button-light button-more" target="_blank"
+                    data-aos="zoom-in">View More</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PORTFOLIO ========== -->
+<section class="portfolio section bd-container" id="portfolio" data-aos="fade-up">
+    <div data-aos="fade-down">
+        <span class="section-subtitle" data-aos="fade-down">My Projects</span>
+        <div class="blue-line-sub"></div>
+    </div>
+    <div data-aos="zoom-in">
+        <div class="section-title" data-aos="zoom-in">Portfolio</div>
+        <div class="blue-line"></div>
+    </div>
+
+    <div class="portfolio_nav" data-aos="fade-up">
+        <span class="portfolio_item active-portfolio" data-filter="all">All</span>
+        <span class="portfolio_item" data-filter=".web">Websites</span>
+        <span class="portfolio_item" data-filter=".app">Apps</span>
+    </div>
+
+    <div class="portfolio_container bd-grid">
+        {% for project in projects %}
+
+        <div class="portfolio_content mix web" data-aos="zoom-in">
+            <a href="{{ project.website_url }}" target="_blank"><img src="{{ project.image.url }}" alt=""
+                    class="portfolio_img"></a>
+            <div class="portfolio_data">
+                <span class="portfolio_subtitle">{{ project.type }}</span>
+                <a href="{{ project.website_url }}" target="_blank">
+                    <h2 class="portfolio_title">{{ project.title }}</h2>
+                </a>
+                <h3 class="portfolio_description">{{ project.description }}</h3>
+                {% if project.url %}
+                <a href="{{ project.website_url }}" target="_blank" class="button button-link">Visit
+                    Site</a>
+                {% endif %}
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="contact section bd-container" id="contact" data-aos="fade-up">
+    <div data-aos="fade-down">
+        <span class="section-subtitle" data-aos="fade-down">For Projects or Questions</span>
+        <div class="blue-line-sub"></div>
+    </div>
+    <div data-aos="zoom-in">
+        <h2 class="section-title" data-aos="zoom-in">Contact Me</h2>
+        <div class="blue-line"></div>
+    </div>
+
+    <div class="contact_container bd-grid">
+        <div class="contact_content bd-grid">
+            <div class="contact_box" data-aos="fade-up">
+                <i class="bx bx-envelope contact_icon"></i>
+                <h3 class="contact_title">Mail</h3>
+                <a href="mailto:adnanmuhtadi@hotmail.com"><span
+                        class="contact_description">adnanmuhtadi@hotmail.com</span></a>
+            </div>
+
+            <div class="contact_box" data-aos="fade-up">
+                <i class="bx bx-message contact_icon"></i>
+                <h3 class="contact_title">Message</h3>
+                <div>
+                    <a href="https://wa.me/+447951258274" class="contact_social" target="_blank"><i
+                            class="bx bxl-whatsapp-square"></i></a>
+                    <a href="https://telegram.me/adnanmuhtadi" class=" contact_social" target="_blank"><i
+                            class="bx bxl-telegram"></i></a>
+                    <a href="http://m.me/adnan.muhtadi" class="contact_social" target="_blank"><i
+                            class="bx bxl-messenger"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <form action="" class="contact_form" id="contact-form">
+            <div class="contact_inputs" data-aos="fade-up">
+                <input type="text" placeholder="Your Name" class="contact_input name" id="name" required>
+                <input type="email" placeholder="Email Address..." name="" id="email" class="contact_input email"
+                    required>
+            </div>
+
+            <textarea name="" id="" cols="" rows="10" placeholder="Write message here..." class="contact_input message"
+                data-aos="fade-up" required></textarea>
+
+            <input type="submit" value="Send" class="button contact_button send-btn" id="send-btn" data-aos="zoom-in">
+        </form>
+    </div>
+
+</section>
+{% endblock %}
