@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid">
+        <div class="home_data">
+            <span class="home_greetings">Hello, My name is</span>
+            <h1 class="home_name">Adnan Muhtadi</h1>
+            <p>I am a, <span class="home_professional typed-text"></span><span class="cursor blink">&nbsp;</span>
+            </p>
+
+            <a href="{{ MEDIA_URL }}pdf/adnanmuhtadicv.pdf" class="button button-light home_button"
+                target="_blank">Download
+                CV</a>
+        </div>
+
+        <div class="home_social">
+            <a href="https://www.facebook.com/adnan.muhtadi/" class="home_social-icon"><i
+                    class="bx bxl-facebook-square"></i></a>
+            <a href="https://www.instagram.com/adnanmuhtadi/" class="home_social-icon"><i
+                    class="bx bxl-instagram"></i></a>
+            <a href="https://twitter.com/adnanmuhtadi" class="home_social-icon"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/adnan-muhtadi-3588243b/" class="home_social-icon"><i
+                    class="bx bxl-linkedin"></i></a>
+            <a href="https://github.com/adnanmuhtadi" class="home_social-icon"><i class="bx bxl-github"></i></a>
+        </div>
+        {% for mainpicture in mainpictures %}
+        <div class="home_img">
+            <!--<img src="{% static '../media/images/home.jpg' %}" alt="">-->
+            <img src="{{ mainpicture.image.url }}" alt="">
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock %}
