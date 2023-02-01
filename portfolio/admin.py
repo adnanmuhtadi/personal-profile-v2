@@ -13,7 +13,7 @@ class ProjectAdmin(admin.ModelAdmin):
         'meta_type',
         'image',
         'website_url',
-        'gitpod_url',
+        'github_url',
     )
 
 

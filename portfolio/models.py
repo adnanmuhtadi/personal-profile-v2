@@ -9,7 +9,7 @@ class Project(models.Model):
     type = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/work')
     website_url = models.URLField(blank=True)
-    gitpod_url = models.URLField(blank=True)
+    github_url = models.URLField(blank=True)
     date_added = models.DateField()
 
     def __str__(self):

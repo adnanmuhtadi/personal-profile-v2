@@ -203,7 +203,7 @@
     <div class="portfolio_container bd-grid">
         {% for project in projects %}
 
-        <div class="portfolio_content mix web" data-aos="zoom-in">
+        <div class="portfolio_content text-center mix web" data-aos="zoom-in">
             <a href="{{ project.website_url }}" target="_blank"><img src="{{ project.image.url }}" alt=""
                     class="portfolio_img"></a>
             <div class="portfolio_data">
@@ -212,10 +212,27 @@
                     <h2 class="portfolio_title">{{ project.title }}</h2>
                 </a>
                 <h3 class="portfolio_description">{{ project.description }}</h3>
-                {% if project.url %}
-                <a href="{{ project.website_url }}" target="_blank" class="button button-link">Visit
-                    Site</a>
-                {% endif %}
+                <div class="col-12">
+                    <div class="row">
+                        {% if project.website_url %}
+                        <div class="col">
+                            <i class="bx bx-globe qualification_title-icon"></i>
+                            <br>
+                            <a href="{{ project.website_url }}" target="_blank" class="button button-link">Visit
+                                Site</a>
+                        </div>
+                        {% endif %}
+                        {% if project.github_url %}
+                        <div class="col">
+                            <i class="bx bxl-github qualification_title-icon"></i>
+                            <br>
+                            <a href="{{ project.github_url }}" target="_blank" class="button button-link">Visit
+                                Site</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
             </div>
         </div>
 
