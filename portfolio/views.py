@@ -3,7 +3,8 @@ from .models import *
 from .forms import *
 
 
-# Create your views here.
+# Views to pull all information from the database
+# Projects are limited with only 9 items and ordered by date
 def home(request):
     projects = Project.objects.all().order_by('-date_added')[:9]
     qualifications = Qualification.objects.all()
@@ -22,14 +23,18 @@ def home(request):
     return render(request, 'portfolio/home.html', context)
 
 
+# view to the admin side for the profile
+# limited to only the superuser
 def profileAdmin(request):
     return render(request, 'portfolio/profile_admin.html')
 
 
+# view to the create options menu
 def createEntry(request):
     return render(request, 'create/create_entry.html')
 
 
+# view to create experience and adding it to the database 
 def createExperience(request):
 
     form = experienceForm()
@@ -44,6 +49,7 @@ def createExperience(request):
     return render(request, 'create/create_experience.html', context)
 
 
+# view to create project and adding it to the database
 def createProject(request):
 
     form = projectForm()
@@ -58,6 +64,7 @@ def createProject(request):
     return render(request, 'create/create_project.html', context)
 
 
+# view to create qualification and adding it to the database
 def createQualification(request):
 
     form = qualificationForm()

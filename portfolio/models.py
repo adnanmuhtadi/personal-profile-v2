@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Create your models here.
+# model for Projects
 class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
@@ -16,6 +16,7 @@ class Project(models.Model):
         return self.title
 
 
+# model for Qualifications
 class Qualification(models.Model):
     title = models.CharField(max_length=100)
     from_where = models.CharField(max_length=200)
@@ -27,6 +28,7 @@ class Qualification(models.Model):
         return self.title
 
 
+# model for Experience
 class Experience(models.Model):
     title = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
@@ -41,6 +43,7 @@ class Experience(models.Model):
         return self.title
 
 
+# model for the Main picture
 class MainPicture(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/myself')
@@ -49,6 +52,7 @@ class MainPicture(models.Model):
         return self.title
 
 
+# model for the Picture in the about section
 class AboutPicture(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/myself')

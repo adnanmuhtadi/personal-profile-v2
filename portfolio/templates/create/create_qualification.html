@@ -12,6 +12,7 @@
 
             <form action="" method="POST">
                 {% for fm in form %}
+                <!-- need to be added into any form -->
                 {% csrf_token %}
                 <div class="row">
                     <label class="col text-center">{{fm.label}}</label>
