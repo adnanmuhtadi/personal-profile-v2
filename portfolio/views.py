@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Project, Qualification, Experience, MainPicture, AboutPicture
+from django.shortcuts import render, redirect
+from .models import *
+from .forms import *
 
 
 # Create your views here.
@@ -19,3 +20,31 @@ def home(request):
     }
 
     return render(request, 'portfolio/home.html', context)
+
+
+def createExperience(request):
+
+    form = experienceForm()
+    if request.method == 'POST':
+        print('Printing POST:', request.POST)
+        form = experienceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'portfolio/create_experience.html', context)
+
+
+def createProject(request):
+
+    form = projectForm()
+    if request.method == 'POST':
+        print('Printing POST:', request.POST)
+        form = projectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'portfolio/create_project.html', context)

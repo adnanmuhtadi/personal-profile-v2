@@ -11,9 +11,14 @@
 
             <h1>Create</h1>
 
-            <form method="POST">
+            <form action="" method="POST">
+                {% for fm in form %}
                 {% csrf_token %}
-                {{ form.as_p }}
+                <div class="row">
+                    <label class="col text-center">{{fm.label}}</label>
+                    <p class="col text-center">{{fm}}</p>
+                </div>
+                {% endfor %}
                 <button type="submit">create</button>
             </form>
 
