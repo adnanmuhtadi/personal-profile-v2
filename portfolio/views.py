@@ -22,6 +22,14 @@ def home(request):
     return render(request, 'portfolio/home.html', context)
 
 
+def profileAdmin(request):
+    return render(request, 'portfolio/profile_admin.html')
+
+
+def createEntry(request):
+    return render(request, 'create/create_entry.html')
+
+
 def createExperience(request):
 
     form = experienceForm()
@@ -48,3 +56,17 @@ def createProject(request):
 
     context = {'form': form}
     return render(request, 'create/create_project.html', context)
+
+
+def createQualification(request):
+
+    form = qualificationForm()
+    if request.method == 'POST':
+        print('Printing POST:', request.POST)
+        form = projectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'create/create_qualification.html', context)

@@ -12,3 +12,9 @@ class projectForm(ModelForm):
     class Meta:
         model = Project
         fields = '__all__'
+
+
+class qualificationForm(ModelForm):
+    class Meta:
+        model = Qualification
+        fields = ['title', 'from_where', 'completed_date']

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid text-center">
+        <div class="home_data">
+
+            <h1>Create An Entry</h1>
+            <br>
+            <br>
+            <a href="{% url 'create_project' %}" class="button button-light button-more">Add
+                Project</a>
+
+            <a href="{% url 'create_experience' %}" class="button button-light button-more">Add
+                Experience</a>
+
+            <a href="{% url 'create_qualification' %}" class="button button-light button-more">Add
+                Qualification</a>
+
+        </div>
+        <a href="{% url 'profile_admin' %}" class="button button-light button-more">Back to Profile
+            Admin</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid">
+        <div class="home_data">
+
+            <h1>Profile Admin</h1>
+            <br>
+            <br>
+            <a href="{% url 'create_entry' %}" class="button button-light button-more" data-aos="zoom-in">Create New
+                Entry</a>
+
+
+
+        </div>
+        <a href="{% url 'home' %}" class="button button-light button-more" data-aos="zoom-in">Back to Homepage</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -7,22 +7,23 @@
 <section class="home" id="home">
     <div class="home_container bd-container bd-grid">
         <div class="home_data">
-            <span class="home_greetings">dumb fuck</span>
 
-            <h1>Create</h1>
+            <h1>Create Project</h1>
 
             <form action="" method="POST">
                 {% for fm in form %}
                 {% csrf_token %}
                 <div class="row">
                     <label class="col text-center">{{fm.label}}</label>
-                    <p class="col text-center">{{fm}}</p>
+                    <p class="col text-right">{{fm}}</p>
                 </div>
                 {% endfor %}
                 <button type="submit">create</button>
             </form>
 
         </div>
+        <a href="{% url 'create_entry' %}" class="button button-light button-more">Back to Create
+            Entry</a>
     </div>
 </section>
 
