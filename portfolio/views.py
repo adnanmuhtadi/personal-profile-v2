@@ -33,7 +33,7 @@ def createExperience(request):
             return redirect('/')
 
     context = {'form': form}
-    return render(request, 'portfolio/create_experience.html', context)
+    return render(request, 'create/create_experience.html', context)
 
 
 def createProject(request):
@@ -47,4 +47,4 @@ def createProject(request):
             return redirect('/')
 
     context = {'form': form}
-    return render(request, 'portfolio/create_project.html', context)
+    return render(request, 'create/create_project.html', context)
