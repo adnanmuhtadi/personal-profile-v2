@@ -11,16 +11,20 @@
             <h1>Create An Entry</h1>
             <br>
             <br>
+            <!-- add project button -->
             <a href="{% url 'create_project' %}" class="col-12 col-md-6 button-admin button-light">Add
                 Project</a>
 
+            <!-- add experience button -->
             <a href="{% url 'create_experience' %}" class="col-12 col-md-6 button-admin button-light">Add
                 Experience</a>
 
+            <!-- add qualification button -->
             <a href="{% url 'create_qualification' %}" class="col-12 col-md-6 button-admin button-lightt">Add
                 Qualification</a>
-
         </div>
+
+        <!-- gets redirected to the profile admin page-->
         <a href="{% url 'profile_admin' %}" class="button button-light button-more">Back to Profile
             Admin</a>
     </div>

@@ -11,28 +11,33 @@
             <h1>Amend Experience</h1>
 
             <form action="" method="POST">
+                <!-- for loop to go through the experiences the list -->
                 {% for experience in experiences %}
                 <div class="row">
                     <div class="qualification_data">
+                        <!-- to display the title -->
                         <h3 class="qualification_area-admin mt-3">{{ experience.title }}</h3>
 
                         <div class="qualification_box">
+                            <!-- to display the name of the companies and location-->
                             <span class="qualification_work-admin col">
                                 <i class="bx bx-briefcase-alt qualification_icon-admin"></i>
                                 {{ experience.company }} - {{ experience.location }}
                             </span>
 
+                            <!-- to displayed  the start and finish data in a specific format -->
                             <span class="qualification_work-admin col">
                                 <i class="bx bx-calendar-alt qualification_icon"></i>
-                                {{ experience.start_date|date:'M Y' }}
+                                {{ experience.start_date|date:'d M Y' }}
                                 {% if experience.finished_date %}
-                                - {{ experience.finished_date|date:'M Y' }}
+                                - {{ experience.finished_date|date:'d M Y' }}
                                 {% else %}
                                 - Present
                                 {% endif %}
                             </span>
                             <br>
 
+                            <!-- Amend and Delete options -->
                             <a href="{% url 'update_experience' experience.id %}"
                                 class="button button-light button-more col-6 me-2">Amend</a>
 
@@ -43,8 +48,9 @@
                 </div>
                 {% endfor %}
             </form>
-
         </div>
+
+        <!-- gets redirected to the amend entry page-->
         <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend
             Entry</a>
     </div>

@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from .models import *
 
 
+###############################################################
 # form fields that are being called from the experience model
 # called all fields
 class experienceForm(ModelForm):
@@ -17,6 +18,7 @@ class experienceForm(ModelForm):
         ]
 
 
+###############################################################
 # form fields that are being called from the qualification model
 # called sum fields to add
 class qualificationForm(ModelForm):
@@ -29,6 +31,7 @@ class qualificationForm(ModelForm):
         ]
 
 
+###############################################################
 # form fields that are being called from the project model
 # called all fields
 class projectForm(ModelForm):
@@ -43,8 +46,11 @@ class projectForm(ModelForm):
             'github_url',
             'date_added',
         ]
-        
-        
+
+
+###############################################################
+# form fields that are being called from the Main Picture (Header image) model
+# called all fields
 class mainpictureForm(ModelForm):
     class Meta:
         model = MainPicture
@@ -52,8 +58,11 @@ class mainpictureForm(ModelForm):
             'title',
             'image',
         ]
-        
-        
+
+
+###############################################################
+# form fields that are being called from the About Picture (About image) model
+# called all fields
 class aboutpictureForm(ModelForm):
     class Meta:
         model = AboutPicture
@@ -61,8 +70,11 @@ class aboutpictureForm(ModelForm):
             'title',
             'image',
         ]
-        
 
+
+###############################################################
+# form fields that are being called from the CV side model
+# called all fields
 class MyCVForm(ModelForm):
     class Meta:
         model = MyCV

@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import *
 
 
+###############################################################
 class ExperienceAdmin(admin.ModelAdmin):
     # How they would be displayed in the django admin
     list_display = (
@@ -17,6 +18,7 @@ class ExperienceAdmin(admin.ModelAdmin):
 admin.site.register(Experience, ExperienceAdmin)
 
 
+###############################################################
 class QualificationAdmin(admin.ModelAdmin):
     # How they would be displayed in the django admin
     list_display = (
@@ -31,6 +33,7 @@ class QualificationAdmin(admin.ModelAdmin):
 admin.site.register(Qualification, QualificationAdmin)
 
 
+###############################################################
 class ProjectAdmin(admin.ModelAdmin):
     # How they would be displayed in the django admin
     list_display = (
@@ -46,6 +49,7 @@ class ProjectAdmin(admin.ModelAdmin):
 admin.site.register(Project, ProjectAdmin)
 
 
+###############################################################
 class MainPictureAdmin(admin.ModelAdmin):
     # How they would be displayed in the django admin
     list_display = (
@@ -58,6 +62,7 @@ class MainPictureAdmin(admin.ModelAdmin):
 admin.site.register(MainPicture, MainPictureAdmin)
 
 
+###############################################################
 class AboutPictureAdmin(admin.ModelAdmin):
     # How they would be displayed in the django admin
     list_display = (
@@ -70,11 +75,13 @@ class AboutPictureAdmin(admin.ModelAdmin):
 admin.site.register(AboutPicture, AboutPictureAdmin)
 
 
+###############################################################
 class MyCVAdmin(admin.ModelAdmin):
     # How they would be displayed in the django admin
     list_display = (
         'title',
         'myfile',
+        'date_added',
     )
 
 

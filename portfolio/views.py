@@ -51,9 +51,11 @@ def amendEntry(request):
 def createExperience(request):
 
     form = experienceForm()
+    # Checking if the form is POST
     if request.method == 'POST':
         print('Printing POST:', request.POST)
         form = experienceForm(request.POST)
+        # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             form.save()
             return redirect('/create_entry/')
@@ -64,6 +66,7 @@ def createExperience(request):
 
 # view to the Amend Experiences
 def amendExperience(request):
+    # Displaying all the option in the list
     experiences = Experience.objects.all()
     context = {
         'experiences': experiences,
@@ -74,12 +77,15 @@ def amendExperience(request):
 # View to update the Experience
 def updateExperience(request, pk):
 
+    # setting an id for each object pk
     experience = Experience.objects.get(id=pk)
     form = experienceForm(instance=experience)
 
+    # checking if the form is POST
     if request.method == 'POST':
         print('Updating POST:', request.POST)
         form = experienceForm(request.POST, instance=experience)
+        # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             form.save()
             return redirect('/amend_experience/')
@@ -90,7 +96,10 @@ def updateExperience(request, pk):
 
 # Function to delete an experience
 def deleteExperience(request, pk):
+
+    # Setting the id for each object pk
     experience = Experience.objects.get(id=pk)
+    # Checking if the form is POST
     if request.method == "POST":
         experience.delete()
         return redirect('/amend_experience/')
@@ -103,10 +112,13 @@ def deleteExperience(request, pk):
 # Qualifications
 # view to create qualification and adding it to the database
 def createQualification(request):
+
     form = qualificationForm()
+    # Checking if the form is POST
     if request.method == 'POST':
         print('Printing POST:', request.POST)
         form = qualificationForm(request.POST)
+        # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             form.save()
             return redirect('/create_entry/')
@@ -127,12 +139,15 @@ def amendQualification(request):
 # update the qualifications
 def updateQualification(request, pk):
 
+    # Setting the Id for each object pk
     qualification = Qualification.objects.get(id=pk)
     form = qualificationForm(instance=qualification)
 
+    # Checking if the form is POST
     if request.method == 'POST':
         print('Updating POST:', request.POST)
         form = qualificationForm(request.POST, instance=qualification)
+        # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             form.save()
             return redirect('/amend_qualification/')
@@ -143,7 +158,10 @@ def updateQualification(request, pk):
 
 # Function to delete qualifications
 def deleteQaulification(request, pk):
+
+    # Setting the ID for each object pk
     qualification = Qualification.objects.get(id=pk)
+    # Checking if the form is POST
     if request.method == "POST":
         qualification.delete()
         return redirect('/amend_qualification/')
@@ -156,10 +174,14 @@ def deleteQaulification(request, pk):
 # Projects
 # view to create project and adding it to the database
 def createProject(request):
+
     form = projectForm()
+    # Checking if the form method is POST
     if request.method == 'POST':
         print('Printing POST:', request.POST)
+        # request.files is take the URL of the file and post it in Django
         form = projectForm(request.POST, request.FILES)
+        # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             form.save()
             return redirect('/create_entry/')
@@ -170,30 +192,35 @@ def createProject(request):
 
 ###############################################################
 # Main Picture
-
 # view to the Amend Main Picture
 def amendMainPicture(request):
+    # getting all the items from the database and putting in the method
     mainpictures = MainPicture.objects.all()
     context = {
         'mainpictures': mainpictures,
     }
     return render(request, 'amend/amend_mainpicture.html', context)
 
+
 # Update to main picture and adding it to the database
 def updateMainPicture(request, pk):
-    
+
+    # Setting an ID for each object pk
     mainpicture = MainPicture.objects.get(id=pk)
     form = mainpictureForm(instance=mainpicture)
-     
+    # Checking if the form method is POST
     if request.method == 'POST':
         print('Updating POST:', request.POST)
-        form = mainpictureForm(request.POST, request.FILES, instance=mainpicture)
+        # request.files is take the URL of the file and post it in Django
+        form = mainpictureForm(
+            request.POST, request.FILES, instance=mainpicture)
+        # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             form.save()
             return redirect('/amend_mainpicture/')
 
     context = {'form': form}
-    return render(request, 'update/update_mainpicture.html', context)#
+    return render(request, 'update/update_mainpicture.html', context)
 
 
 ###############################################################
@@ -208,14 +235,20 @@ def amendAboutPicture(request):
     return render(request, 'amend/amend_aboutpicture.html', context)
 
 # Update to about picture and adding it to the database
+
+
 def updateAboutPicture(request, pk):
-    
+
+    # Setting and ID for each object pk
     aboutpicture = AboutPicture.objects.get(id=pk)
     form = aboutpictureForm(instance=aboutpicture)
-     
+    # Checking if the form method is POST
     if request.method == 'POST':
         print('Updating POST:', request.POST)
-        form = aboutpictureForm(request.POST, request.FILES, instance=aboutpicture)
+        # request.files is take the URL of the file and post it in Django
+        form = aboutpictureForm(
+            request.POST, request.FILES, instance=aboutpicture)
+        # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             form.save()
             return redirect('/amend_aboutpicture/')
@@ -238,13 +271,17 @@ def amendMyCV(request):
 
 # Update to about picture and adding it to the database
 def updateMyCV(request, pk):
-    
+
+    # Setting and ID for each object pk
     mycv = MyCV.objects.get(id=pk)
     form = MyCVForm(instance=mycv)
-     
+
+    # checking the form method is POST
     if request.method == 'POST':
         print('Updating POST:', request.POST)
+        # request.files is take the URL of the file and post it in Django
         form = MyCVForm(request.POST, request.FILES, instance=mycv)
+        # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             form.save()
             return redirect('/amend_cv/')

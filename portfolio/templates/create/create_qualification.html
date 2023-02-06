@@ -11,9 +11,11 @@
             <h1 class="mb-4 text-center">Create Qualification</h1>
 
             <form action="" method="POST">
+                <!-- for loop to go through the list within the form -->
                 {% for fm in form %}
                 {% csrf_token %}
                 <div class="row">
+                    <!-- styling the label and field of the form -->
                     <label class="col-md-6 col-sm-12 mb-1 text-sm-start text-md-end">{{fm.label}}</label>
                     <p class="col-md-6 col-sm-12 mb-2 text-sm-start text-md-start">{{fm}}</p>
                 </div>
@@ -22,8 +24,9 @@
                     <button type="submit">Create</button>
                 </div>
             </form>
-
         </div>
+
+        <!-- gets redirected to the Create entry page-->
         <a href="{% url 'create_entry' %}" class="button button-light text-center button-more">Back to Create
             Entry</a>
     </div>

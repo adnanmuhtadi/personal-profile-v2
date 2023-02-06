@@ -8,18 +8,18 @@
 <section class="home" id="home">
     <div class="home_container bd-container bd-grid">
         <div class="home_data text-center">
-
             <h1>Profile Admin</h1>
             <br>
             <br>
+            <!-- going to the create entry section -->
             <a href="{% url 'create_entry' %}" class="col-12 col-md-6 col-lg-6 button-admin button-light">Create New
                 Entry</a>
 
+            <!-- going to the amend entry section -->
             <a href="{% url 'amend_entry' %}" class="col-12 col-md-6 button-admin button-light">Update/Delete Entry</a>
-
-
-
         </div>
+
+        <!-- going back to the homepage -->
         <a href="{% url 'home' %}" class="button button-light button-more">Back to Homepage</a>
     </div>
 </section>

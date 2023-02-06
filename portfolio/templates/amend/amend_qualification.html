@@ -11,26 +11,32 @@
             <h1>Amend Qualification</h1>
 
             <form action="" method="POST">
+                <!-- for loop to go through the qualifications list -->
                 {% for qualification in qualifications %}
                 <div class="row">
                     <div class="qualification_data">
+                        <!-- to display the title of the qualification-->
                         <h3 class="qualification_area-admin mt-3">{{ qualification.title }}</h3>
 
                         <div class="qualification_box">
+                            <!-- to display where it was achieved -->
                             <span class="qualification_work-admin col">
                                 <i class="bx bx-briefcase-alt qualification_icon-admin"></i>
                                 {{ qualification.from_where }}
                             </span>
 
+                            <!-- to display when it was completed in a specific format -->
                             <span class="qualification_work-admin col">
                                 <i class="bx bx-calendar-alt qualification_icon"></i>
                                 {{ qualification.completed_date|date:'M Y' }}
                             </span>
                             <br>
 
+                            <!-- amend button which only amend the specific selected row -->
                             <a href="{% url 'update_qualification' qualification.id %}"
                                 class="button button-light button-more col-6 me-2">Amend</a>
 
+                            <!-- delete button which only delete the specific selected row -->
                             <a href="{% url 'delete_qualification' qualification.id %}"
                                 class="button button-light button-more col-6">Delete</a>
                         </div>
@@ -38,8 +44,9 @@
                 </div>
                 {% endfor %}
             </form>
-
         </div>
+
+        <!-- gets redirected to the amend entry page-->
         <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend
             Entry</a>
     </div>

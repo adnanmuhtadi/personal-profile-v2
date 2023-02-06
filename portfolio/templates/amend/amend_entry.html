@@ -11,25 +11,32 @@
             <h1>Amend An Entry</h1>
             <br>
             <br>
+            <!-- Experience section -->
             <a href="{% url 'amend_experience' %}" class="col-12 col-md-6 button-admin button-light">Amend
                 Experiences</a>
 
+            <!-- Qualification section -->
             <a href="{% url 'amend_qualification' %}" class="col-12 col-md-6 button-admin button-light">Amend
                 Qualifications</a>
 
+            <!-- Project section -->
             <a href="" class="col-12 col-md-6 button-admin button-light">Amend
                 Projects</a>
 
+            <!-- Main picture section -->
             <a href="{% url 'amend_mainpicture' %}" class="col-12 col-md-6 button-admin button-light">Amend
                 Header Image</a>
 
+            <!-- About picture section -->
             <a href="{% url 'amend_aboutpicture' %}" class="col-12 col-md-6 button-admin button-light">Amend
                 About Image</a>
 
+            <!-- CV section -->
             <a href="{% url 'amend_cv' %}" class="col-12 col-md-6 button-admin button-light">Amend
                 CV</a>
-
         </div>
+
+        <!-- redirected to the profile page-->
         <a href="{% url 'profile_admin' %}" class="button button-light button-more">Back to Profile
             Admin</a>
     </div>

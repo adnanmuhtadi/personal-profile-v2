@@ -11,17 +11,20 @@
             <h1>Amend CV</h1>
 
             <form action="" method="POST">
+                <!-- for loop to go through the CV list -->
                 {% for mycv in mycvs %}
                 <div class="qualification_data" data-aos="fade-up">
                     <h3 class="qualification_area">{{ mycv.title }}</h3>
 
+                    <!-- amend button which only amend the specific selected row -->
                     <a href="{% url 'update_mycv' mycv.id %}"
                         class="button button-light button-more col-6 me-2">Amend</a>
                 </div>
                 {% endfor %}
             </form>
-
         </div>
+
+        <!-- gets redirected to the amend entry page-->
         <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend
             Entry</a>
     </div>

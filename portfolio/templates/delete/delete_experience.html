@@ -11,16 +11,18 @@
             <h1>Are you sure you want to delete "{{item}}"?</h1>
             <br>
             <br>
+            <!-- calling the id from each object -->
             <form action="{% url 'delete_experience' item.id %}" method="POST">
                 {% csrf_token %}
 
+                <!-- going back to the previous page -->
                 <a href="{% url 'amend_experience' %}" class="button button-light button-more">Cancel</a>
 
                 <input type="submit" name="Confirm" class="button button-light button-more" value="Delete">
-
             </form>
-
         </div>
+
+        <!-- going back to the amend entry page -->
         <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend An Entry</a>
     </div>
 </section>
