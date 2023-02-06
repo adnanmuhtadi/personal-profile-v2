@@ -164,3 +164,59 @@ def createProject(request):
 
     context = {'form': form}
     return render(request, 'create/create_project.html', context)
+
+
+###############################################################
+# Main Picture
+
+# view to the Amend Main Picture
+def amendMainPicture(request):
+    mainpictures = MainPicture.objects.all()
+    context = {
+        'mainpictures': mainpictures,
+    }
+    return render(request, 'amend/amend_mainpicture.html', context)
+
+# Update to main picture and adding it to the database
+def updateMainPicture(request, pk):
+    
+    mainpicture = MainPicture.objects.get(id=pk)
+    form = mainpictureForm(instance=mainpicture)
+     
+    if request.method == 'POST':
+        print('Updating POST:', request.POST)
+        form = mainpictureForm(request.POST, request.FILES, instance=mainpicture)
+        if form.is_valid():
+            form.save()
+            return redirect('/amend_mainpicture/')
+
+    context = {'form': form}
+    return render(request, 'update/update_mainpicture.html', context)#
+
+
+###############################################################
+# About Picture
+
+# view to the Amend About Picture
+def amendAboutPicture(request):
+    aboutpictures = AboutPicture.objects.all()
+    context = {
+        'aboutpictures': aboutpictures,
+    }
+    return render(request, 'amend/amend_aboutpicture.html', context)
+
+# Update to about picture and adding it to the database
+def updateAboutPicture(request, pk):
+    
+    aboutpicture = AboutPicture.objects.get(id=pk)
+    form = aboutpictureForm(instance=aboutpicture)
+     
+    if request.method == 'POST':
+        print('Updating POST:', request.POST)
+        form = aboutpictureForm(request.POST, request.FILES, instance=aboutpicture)
+        if form.is_valid():
+            form.save()
+            return redirect('/amend_aboutpicture/')
+
+    context = {'form': form}
+    return render(request, 'update/update_aboutpicture.html', context)

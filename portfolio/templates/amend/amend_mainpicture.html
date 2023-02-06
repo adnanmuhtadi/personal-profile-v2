@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid">
+        <div class="home_data">
+
+            <h1>Amend Main Picture</h1>
+
+            <form action="" method="POST">
+                {% for mainpicture in mainpictures %}
+                <div class="qualification_data" data-aos="fade-up">
+                    <h3 class="qualification_area">{{ mainpicture.title }}</h3>
+
+                    <a href="{% url 'update_mainpicture' mainpicture.id %}"
+                        class="button button-light button-more col-6 me-2">Amend</a>
+                </div>
+                {% endfor %}
+            </form>
+
+        </div>
+        <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend
+            Entry</a>
+    </div>
+</section>
+
+{% endblock %}

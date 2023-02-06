@@ -43,3 +43,21 @@ class projectForm(ModelForm):
             'github_url',
             'date_added',
         ]
+        
+        
+class mainpictureForm(ModelForm):
+    class Meta:
+        model = MainPicture
+        fields = [
+            'title',
+            'image',
+        ]
+        
+        
+class aboutpictureForm(ModelForm):
+    class Meta:
+        model = AboutPicture
+        fields = [
+            'title',
+            'image',
+        ]

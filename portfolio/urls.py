@@ -20,12 +20,20 @@ urlpatterns = [
     path('amend_experience/', views.amendExperience, name="amend_experience"),
     path('amend_qualification/', views.amendQualification,
          name="amend_qualification"),
+    
+     path('amend_mainpicture/', views.amendMainPicture, name="amend_mainpicture"),
+     path('amend_aboutpicture/', views.amendAboutPicture, name="amend_aboutpicture"),
+
 
     # URLs to Update current information
     path('update_experience/<str:pk>/',
          views.updateExperience, name="update_experience"),
     path('update_qualification/<str:pk>/',
          views.updateQualification, name="update_qualification"),
+    
+     path('update_mainpicture/<str:pk>/', views.updateMainPicture, name="update_mainpicture"),
+     path('update_aboutpicture/<str:pk>/', views.updateAboutPicture, name="update_aboutpicture"),
+
 
     # URLs to Delete current information
     path('delete_experience/<str:pk>/',

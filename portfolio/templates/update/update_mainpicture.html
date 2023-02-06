@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container_admin bd-container bd-grid">
+        <div class="home_data-admin">
+
+            <h1 class="mb-4 text-center">Update Main Picture</h1>
+
+            <!-- add the enctype if you want to update images -->
+            <form enctype="multipart/form-data" action="" method="POST">
+                {% for fm in form %}
+                {% csrf_token %}
+                <div class="row">
+                    <label class="col-md-6 col-sm-12 mb-1 text-sm-start text-md-end">{{fm.label}}</label>
+                    <p class="col-md-6 col-sm-12 mb-2 text-sm-start text-md-start">{{fm}}</p>
+                </div>
+                {% endfor %}
+                <div class="text-center">
+                    <button type="submit">Save</button>
+                </div>
+            </form>
+
+        </div>
+        <a href="{% url 'amend_entry' %}" class="button button-light text-center button-more">Back to Amend
+            An Entry</a>
+    </div>
+</section>
+
+{% endblock %}
