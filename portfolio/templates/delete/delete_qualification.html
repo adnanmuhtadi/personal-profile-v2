@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid text-center">
+        <div class="home_data">
+
+            <h1>Are you sure you want to delete "{{item}}"?</h1>
+            <br>
+            <br>
+            <form action="{% url 'delete_qualification' item.id %}" method="POST">
+                {% csrf_token %}
+
+                <a href="{% url 'amend_qualification' %}" class="button button-light button-more">Cancel</a>
+
+                <input type="submit" name="Confirm" class="button button-light button-more" value="Delete">
+
+            </form>
+
+        </div>
+        <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend An Entry</a>
+    </div>
+</section>
+
+{% endblock %}

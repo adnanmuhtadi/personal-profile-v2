@@ -7,7 +7,7 @@ from .forms import *
 # Views to pull all information from the database
 # Projects are limited with only 9 items and ordered by date
 def home(request):
-    projects = Project.objects.all().order_by('-date_added')
+    projects = Project.objects.all().order_by('-date_added')[:9]
     qualifications = Qualification.objects.all().order_by(
         '-completed_date')[:3]
     experiences = Experience.objects.all().order_by('-start_date')[:3]
@@ -54,7 +54,7 @@ def createExperience(request):
         form = experienceForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/create_entry/')
 
     context = {'form': form}
     return render(request, 'create/create_experience.html', context)
@@ -83,33 +83,18 @@ def updateExperience(request, pk):
             return redirect('/amend_experience/')
 
     context = {'form': form}
-    return render(request, 'amend/update_experience.html', context)
+    return render(request, 'update/update_experience.html', context)
 
 
+# Function to delete an experience
 def deleteExperience(request, pk):
     experience = Experience.objects.get(id=pk)
     if request.method == "POST":
         experience.delete()
-        return redirect('/')
+        return redirect('/amend_experience/')
 
     context = {'item': experience}
-    return render(request, 'amend/delete_experience.html', context)
-
-
-###############################################################
-# Projects
-# view to create project and adding it to the database
-def createProject(request):
-    form = projectForm()
-    if request.method == 'POST':
-        print('Printing POST:', request.POST)
-        form = projectForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/create_entry/')
-
-    context = {'form': form}
-    return render(request, 'create/create_project.html', context)
+    return render(request, 'delete/delete_experience.html', context)
 
 
 ###############################################################
@@ -126,3 +111,56 @@ def createQualification(request):
 
     context = {'form': form}
     return render(request, 'create/create_qualification.html', context)
+
+
+# view to the Amend qualifications
+def amendQualification(request):
+    qualifications = Qualification.objects.all()
+    context = {
+        'qualifications': qualifications,
+    }
+    return render(request, 'amend/amend_qualification.html', context)
+
+
+# update the qualifications
+def updateQualification(request, pk):
+
+    qualification = Qualification.objects.get(id=pk)
+    form = qualificationForm(instance=qualification)
+
+    if request.method == 'POST':
+        print('Updating POST:', request.POST)
+        form = qualificationForm(request.POST, instance=qualification)
+        if form.is_valid():
+            form.save()
+            return redirect('/amend_qualification/')
+
+    context = {'form': form}
+    return render(request, 'update/update_qualification.html', context)
+
+
+# Function to delete qualifications
+def deleteQaulification(request, pk):
+    qualification = Qualification.objects.get(id=pk)
+    if request.method == "POST":
+        qualification.delete()
+        return redirect('/amend_qualification/')
+
+    context = {'item': qualification}
+    return render(request, 'delete/delete_qualification.html', context)
+
+
+###############################################################
+# Projects
+# view to create project and adding it to the database
+def createProject(request):
+    form = projectForm()
+    if request.method == 'POST':
+        print('Printing POST:', request.POST)
+        form = projectForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/create_entry/')
+
+    context = {'form': form}
+    return render(request, 'create/create_project.html', context)

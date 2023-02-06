@@ -549,6 +549,14 @@ button{
     color: var(--first-color-light);
 }
 
+.qualification_area-admin,
+.qualification_icon-admin,
+.qualification_work-admin{
+    margin-bottom: var(--mb-1);
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-rev);
+}
+
 .qualification_work{
     display: block;
 }

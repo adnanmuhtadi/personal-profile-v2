@@ -8,35 +8,30 @@
     <div class="home_container_admin bd-container bd-grid">
         <div class="home_data-admin">
 
-            <h1>Amend Experience</h1>
+            <h1>Amend Qualification</h1>
 
             <form action="" method="POST">
-                {% for experience in experiences %}
+                {% for qualification in qualifications %}
                 <div class="row">
                     <div class="qualification_data">
-                        <h3 class="qualification_area-admin mt-3">{{ experience.title }}</h3>
+                        <h3 class="qualification_area-admin mt-3">{{ qualification.title }}</h3>
 
                         <div class="qualification_box">
                             <span class="qualification_work-admin col">
                                 <i class="bx bx-briefcase-alt qualification_icon-admin"></i>
-                                {{ experience.company }} - {{ experience.location }}
+                                {{ qualification.from_where }}
                             </span>
 
                             <span class="qualification_work-admin col">
                                 <i class="bx bx-calendar-alt qualification_icon"></i>
-                                {{ experience.start_date|date:'M Y' }}
-                                {% if experience.finished_date %}
-                                - {{ experience.finished_date|date:'M Y' }}
-                                {% else %}
-                                - Present
-                                {% endif %}
+                                {{ qualification.completed_date|date:'M Y' }}
                             </span>
                             <br>
 
-                            <a href="{% url 'update_experience' experience.id %}"
+                            <a href="{% url 'update_qualification' qualification.id %}"
                                 class="button button-light button-more col-6 me-2">Amend</a>
 
-                            <a href="{% url 'delete_experience' experience.id %}"
+                            <a href="{% url 'delete_qualification' qualification.id %}"
                                 class="button button-light button-more col-6">Delete</a>
                         </div>
                     </div>

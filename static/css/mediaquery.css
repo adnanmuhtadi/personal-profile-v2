@@ -93,6 +93,12 @@
         grid-template-columns: repeat(3,1fr);
     }
 
+    .portfolio_img_default{
+        height: 113px;
+        width: 50%;
+        margin: auto;
+    }
+
     .contact_form{
         width: auto;
     }
@@ -142,5 +148,9 @@
 
     .qualification_container{
         column-gap: 6rem;
+    }
+
+    .portfolio_img_default{
+        height: 155px;
     }
 }
