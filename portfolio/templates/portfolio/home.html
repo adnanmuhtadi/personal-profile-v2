@@ -6,16 +6,16 @@
 
 <!-- ========== HOME ========== -->
 <section class="home" id="home">
-    <div class="home_container bd-container bd-grid">
+    <div class=" home_container bd-container bd-grid">
         <div class="home_data">
             <span class="home_greetings">Hello, My name is</span>
             <h1 class="home_name">Adnan Muhtadi</h1>
             <p>I am a, <span class="home_professional typed-text"></span><span class="cursor blink">&nbsp;</span>
             </p>
-
-            <a href="{{ MEDIA_URL }}pdf/adnanmuhtadicv.pdf" class="button button-light home_button"
-                target="_blank">Download
+            {% for mycv in mycvs %}
+            <a href="{{ mycv.myfile.url }}" class="button button-light home_button" target="_blank">Download
                 CV</a>
+            {% endfor %}
         </div>
 
         <div class="home_social">
@@ -120,10 +120,11 @@
                     </div>
                 </div>
                 {% endfor %}
-
-                <a href="{{ MEDIA_URL }}pdf/adnanmuhtadicv.pdf" class="button button-light button-more" target="_blank"
+                {% for mycv in mycvs %}
+                <a href="{{ mycv.myfile }}" class="button button-light button-more" target="_blank"
                     data-aos="zoom-in">View
                     More</a>
+                {% endfor %}
 
             </div>
         </div>
@@ -153,10 +154,11 @@
                     </div>
                 </div>
                 {% endfor %}
-
-                <a href="{{ MEDIA_URL }}pdf/adnanmuhtadicv.pdf" class="button button-light button-more" target="_blank"
-                    data-aos="zoom-in">View More</a>
-
+                {% for mycv in mycvs %}
+                <a href="{{ mycv.myfile }}" class="button button-light button-more" target="_blank"
+                    data-aos="zoom-in">View
+                    More</a>
+                {% endfor %}
             </div>
         </div>
     </div>

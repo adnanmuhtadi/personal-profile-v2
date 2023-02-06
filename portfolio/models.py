@@ -59,3 +59,12 @@ class AboutPicture(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# model for the CV upload
+class MyCV(models.Model):
+    title = models.CharField(max_length=100)
+    myfile = models.FileField(upload_to='pdf/')
+
+    def __str__(self):
+        return self.title

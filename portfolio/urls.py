@@ -23,6 +23,7 @@ urlpatterns = [
     
      path('amend_mainpicture/', views.amendMainPicture, name="amend_mainpicture"),
      path('amend_aboutpicture/', views.amendAboutPicture, name="amend_aboutpicture"),
+     path('amend_cv/', views.amendMyCV, name="amend_cv"),
 
 
     # URLs to Update current information
@@ -33,6 +34,7 @@ urlpatterns = [
     
      path('update_mainpicture/<str:pk>/', views.updateMainPicture, name="update_mainpicture"),
      path('update_aboutpicture/<str:pk>/', views.updateAboutPicture, name="update_aboutpicture"),
+     path('update_mycv/<str:pk>/', views.updateMyCV, name="update_mycv"),
 
 
     # URLs to Delete current information

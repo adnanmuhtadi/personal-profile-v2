@@ -1,9 +1,5 @@
 from django.contrib import admin
-from .models import Experience
-from .models import Qualification
-from .models import Project
-from .models import MainPicture
-from .models import AboutPicture
+from .models import *
 
 
 class ExperienceAdmin(admin.ModelAdmin):
@@ -72,3 +68,15 @@ class AboutPictureAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(AboutPicture, AboutPictureAdmin)
+
+
+class MyCVAdmin(admin.ModelAdmin):
+    # How they would be displayed in the django admin
+    list_display = (
+        'title',
+        'myfile',
+    )
+
+
+# Register your models here.
+admin.site.register(MyCV, MyCVAdmin)

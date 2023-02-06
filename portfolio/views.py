@@ -13,6 +13,7 @@ def home(request):
     experiences = Experience.objects.all().order_by('-start_date')[:3]
     mainpictures = MainPicture.objects.all()
     aboutpictures = AboutPicture.objects.all()
+    mycvs = MyCV.objects.all()
 
     context = {
         'qualifications': qualifications,
@@ -20,6 +21,7 @@ def home(request):
         'experiences': experiences,
         'mainpictures': mainpictures,
         'aboutpictures': aboutpictures,
+        'mycvs': mycvs,
     }
 
     return render(request, 'portfolio/home.html', context)
@@ -220,3 +222,32 @@ def updateAboutPicture(request, pk):
 
     context = {'form': form}
     return render(request, 'update/update_aboutpicture.html', context)
+
+
+###############################################################
+# My CV
+
+# view to the Amend About Picture
+def amendMyCV(request):
+    mycvs = MyCV.objects.all()
+    context = {
+        'mycvs': mycvs,
+    }
+    return render(request, 'amend/amend_cv.html', context)
+
+
+# Update to about picture and adding it to the database
+def updateMyCV(request, pk):
+    
+    mycv = MyCV.objects.get(id=pk)
+    form = MyCVForm(instance=mycv)
+     
+    if request.method == 'POST':
+        print('Updating POST:', request.POST)
+        form = MyCVForm(request.POST, request.FILES, instance=mycv)
+        if form.is_valid():
+            form.save()
+            return redirect('/amend_cv/')
+
+    context = {'form': form}
+    return render(request, 'update/update_cv.html', context)

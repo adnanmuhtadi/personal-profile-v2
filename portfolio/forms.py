@@ -61,3 +61,12 @@ class aboutpictureForm(ModelForm):
             'title',
             'image',
         ]
+        
+
+class MyCVForm(ModelForm):
+    class Meta:
+        model = MyCV
+        fields = [
+            'title',
+            'myfile',
+        ]
