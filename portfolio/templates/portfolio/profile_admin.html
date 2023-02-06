@@ -6,18 +6,20 @@
 
 <section class="home" id="home">
     <div class="home_container bd-container bd-grid">
-        <div class="home_data">
+        <div class="home_data text-center">
 
             <h1>Profile Admin</h1>
             <br>
             <br>
-            <a href="{% url 'create_entry' %}" class="button button-light button-more" data-aos="zoom-in">Create New
+            <a href="{% url 'create_entry' %}" class="col-12 col-md-6 col-lg-6 button-admin button-light">Create New
                 Entry</a>
+
+            <a href="{% url 'amend_entry' %}" class="col-12 col-md-6 button-admin button-light">Update/Delete Entry</a>
 
 
 
         </div>
-        <a href="{% url 'home' %}" class="button button-light button-more" data-aos="zoom-in">Back to Homepage</a>
+        <a href="{% url 'home' %}" class="button button-light button-more">Back to Homepage</a>
     </div>
 </section>
 

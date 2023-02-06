@@ -7,7 +7,14 @@ from .models import *
 class experienceForm(ModelForm):
     class Meta:
         model = Experience
-        fields = '__all__'
+        fields = [
+            'title',
+            'company',
+            'location',
+            'start_date',
+            'present',
+            'finished_date',
+        ]
 
 
 # form fields that are being called from the qualification model
@@ -15,7 +22,11 @@ class experienceForm(ModelForm):
 class qualificationForm(ModelForm):
     class Meta:
         model = Qualification
-        fields = ['title', 'from_where', 'completed_date']
+        fields = [
+            'title',
+            'from_where',
+            'completed_date',
+        ]
 
 
 # form fields that are being called from the project model
@@ -23,4 +34,12 @@ class qualificationForm(ModelForm):
 class projectForm(ModelForm):
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = [
+            'title',
+            'meta_type',
+            'type',
+            'image',
+            'website_url',
+            'github_url',
+            'date_added',
+        ]

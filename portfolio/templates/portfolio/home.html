@@ -184,8 +184,13 @@
         {% for project in projects %}
 
         <div class="portfolio_content text-center mix {{ project.meta_type }}" data-aos="zoom-in">
+            {% if project.image %}
             <a href="{{ project.website_url }}" target="_blank"><img src="{{ project.image.url }}" alt=""
                     class="portfolio_img"></a>
+            {% else %}
+            <a href="{{ project.website_url }}"><img src="{{ MEDIA_URL }}images/work/default.png" width="100"
+                    height="300" alt="" class="portfolio_img_default"></a>
+            {% endif %}
             <div class="portfolio_data">
                 <span class="portfolio_subtitle">{{ project.type }}</span>
                 <a href="{{ project.website_url }}" target="_blank">

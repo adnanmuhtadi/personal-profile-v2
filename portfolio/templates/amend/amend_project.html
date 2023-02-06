@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid">
+        <div class="home_data">
+
+            <h1>Amend Project</h1>
+
+            <form action="" method="POST">
+                {% for project in projects %}
+                <div class="qualification_data" data-aos="fade-up">
+                    <h3 class="qualification_area">{{ project.title }}</h3>
+
+
+                </div>
+                {% endfor %}
+            </form>
+
+        </div>
+        <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend
+            Entry</a>
+    </div>
+</section>
+
+{% endblock %}

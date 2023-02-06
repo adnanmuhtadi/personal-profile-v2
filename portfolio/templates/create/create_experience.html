@@ -5,24 +5,26 @@
 {% block content %}
 
 <section class="home" id="home">
-    <div class="home_container bd-container bd-grid">
-        <div class="home_data">
+    <div class="home_container_admin bd-container bd-grid">
+        <div class="home_data-admin">
 
-            <h1>Create Experience</h1>
+            <h1 class="mb-4 text-center">Create Experience</h1>
 
             <form action="" method="POST">
                 {% for fm in form %}
                 {% csrf_token %}
                 <div class="row">
-                    <label class="col text-center">{{fm.label}}</label>
-                    <p class="col text-center">{{fm}}</p>
+                    <label class="col-md-6 col-sm-12 mb-1 text-sm-start text-md-end">{{fm.label}}</label>
+                    <p class="col-md-6 col-sm-12 mb-2 text-sm-start text-md-start">{{fm}}</p>
                 </div>
                 {% endfor %}
-                <button type="submit">create</button>
+                <div class="text-center">
+                    <button type="submit">Create</button>
+                </div>
             </form>
 
         </div>
-        <a href="{% url 'create_entry' %}" class="button button-light button-more">Back to Create
+        <a href="{% url 'create_entry' %}" class="button button-light text-center button-more">Back to Create
             Entry</a>
     </div>
 </section>

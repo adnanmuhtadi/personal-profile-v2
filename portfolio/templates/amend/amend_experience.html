@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid">
+        <div class="home_data">
+
+            <h1>Amend Experience</h1>
+
+            <form action="" method="POST">
+                {% for experience in experiences %}
+                <div class="qualification_data" data-aos="fade-up">
+                    <h3 class="qualification_area">{{ experience.title }}</h3>
+
+                    <div class="qualification_box">
+                        <span class="qualification_work">
+                            <i class="bx bx-briefcase-alt qualification_icon"></i>
+                            {{ experience.company }} - {{ experience.location }}
+                        </span>
+
+                        <span class="qualification_work">
+                            <i class="bx bx-calendar-alt qualification_icon"></i>
+                            {{ experience.start_date|date:'M Y' }}
+                            {% if experience.finished_date %}
+                            - {{ experience.finished_date|date:'M Y' }}
+                            {% else %}
+                            - Present
+                            {% endif %}
+                        </span>
+
+                        <a href="{% url 'update_experience' experience.id %}"
+                            class="button button-light button-more">Amend</a>
+
+                        <a href="{% url 'delete_experience' experience.id %}"
+                            class="button button-light button-more">Delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </form>
+
+        </div>
+        <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend
+            Entry</a>
+    </div>
+</section>
+
+{% endblock %}

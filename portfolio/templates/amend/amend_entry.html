@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_container bd-container bd-grid text-center">
+        <div class="home_data text-center">
+
+            <h1>Amend An Entry</h1>
+            <br>
+            <br>
+            <a href="{% url 'amend_project' %}" class="col-12 col-md-6 button-admin button-light">Amend
+                Projects</a>
+
+            <a href="{% url 'amend_experience' %}" class="col-12 col-md-6 button-admin button-light">Amend
+                Experiences</a>
+
+            <a href="" class="col-12 col-md-6 button-admin button-light">Amend
+                Qualifications</a>
+
+            <a href="" class="col-12 col-md-6 button-admin button-light">Amend
+                Header Image</a>
+
+            <a href="" class="col-12 col-md-6 button-admin button-light">Amend
+                About Image</a>
+
+        </div>
+        <a href="{% url 'profile_admin' %}" class="button button-light button-more">Back to Profile
+            Admin</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -14,4 +14,12 @@ urlpatterns = [
     path('create_project/', views.createProject, name="create_project"),
     path('create_qualification/', views.createQualification,
          name="create_qualification"),
+
+    # URLs to amend current information
+    path('amend_entry/', views.amendEntry, name="amend_entry"),
+    path('amend_experience/', views.amendExperience, name="amend_experience"),
+    path('update_experience/<str:pk>/',
+         views.updateExperience, name="update_experience"),
+    path('delete_experience/<str:pk>/',
+         views.deleteExperience, name="delete_experience"),
 ]

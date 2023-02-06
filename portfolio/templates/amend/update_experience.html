@@ -8,7 +8,7 @@
     <div class="home_container_admin bd-container bd-grid">
         <div class="home_data-admin">
 
-            <h1 class="mb-4 text-center">Create Qualification</h1>
+            <h1 class="mb-4 text-center">Update Experience</h1>
 
             <form action="" method="POST">
                 {% for fm in form %}
@@ -19,13 +19,13 @@
                 </div>
                 {% endfor %}
                 <div class="text-center">
-                    <button type="submit">Create</button>
+                    <button type="submit">Save</button>
                 </div>
             </form>
 
         </div>
-        <a href="{% url 'create_entry' %}" class="button button-light text-center button-more">Back to Create
-            Entry</a>
+        <a href="{% url 'amend_experience' %}" class="button button-light text-center button-more">Back to Amend
+            Experience</a>
     </div>
 </section>
 
