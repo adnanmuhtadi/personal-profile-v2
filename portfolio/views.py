@@ -50,15 +50,21 @@ def amendEntry(request):
 # view to create experience and adding it to the database
 def createExperience(request):
 
-    form = experienceForm()
     # Checking if the form is POST
     if request.method == 'POST':
-        print('Printing POST:', request.POST)
         form = experienceForm(request.POST)
+        print('Printing POST:', request.POST)
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            data.title = request.POST["title"].title()
+            data.company = request.POST["company"].title()
+            data.location = request.POST["location"].title()
+            data.save()
             return redirect('/create_entry/')
+    else:
+
+        form = experienceForm()
 
     context = {'form': form}
     return render(request, 'create/create_experience.html', context)
