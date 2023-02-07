@@ -11,6 +11,7 @@
             <h1 class="mb-4 text-center">Update Qualification</h1>
 
             <form action="" method="POST">
+                <!-- for loop to go through the form the list -->
                 {% for fm in form %}
                 {% csrf_token %}
                 <div class="row">
@@ -22,8 +23,9 @@
                     <button type="submit">Save</button>
                 </div>
             </form>
-
         </div>
+
+        <!-- send user back to the amend qualification page -->
         <a href="{% url 'amend_qualification' %}" class="button button-light text-center button-more">Back to Amend
             Experience</a>
     </div>

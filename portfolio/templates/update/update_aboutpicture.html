@@ -12,6 +12,7 @@
 
             <!-- add the enctype if you want to update images -->
             <form enctype="multipart/form-data" action="" method="POST">
+                <!-- for loop to go through the form the list -->
                 {% for fm in form %}
                 {% csrf_token %}
                 <div class="row">
@@ -23,8 +24,9 @@
                     <button type="submit">Save</button>
                 </div>
             </form>
-
         </div>
+
+        <!-- send user back to the amend_entry page -->
         <a href="{% url 'amend_entry' %}" class="button button-light text-center button-more">Back to Amend
             An Entry</a>
     </div>

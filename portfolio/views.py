@@ -54,16 +54,17 @@ def createExperience(request):
     if request.method == 'POST':
         form = experienceForm(request.POST)
         print('Printing POST:', request.POST)
+
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
             data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
             data.title = request.POST["title"].title()
             data.company = request.POST["company"].title()
             data.location = request.POST["location"].title()
             data.save()
             return redirect('/create_entry/')
     else:
-
         form = experienceForm()
 
     context = {'form': form}
@@ -89,12 +90,19 @@ def updateExperience(request, pk):
 
     # checking if the form is POST
     if request.method == 'POST':
-        print('Updating POST:', request.POST)
         form = experienceForm(request.POST, instance=experience)
+        print('Updating POST:', request.POST)
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
+            data.title = request.POST["title"].title()
+            data.company = request.POST["company"].title()
+            data.location = request.POST["location"].title()
+            data.save()
             return redirect('/amend_experience/')
+    else:
+        data = experienceForm()
 
     context = {'form': form}
     return render(request, 'update/update_experience.html', context)
@@ -119,15 +127,21 @@ def deleteExperience(request, pk):
 # view to create qualification and adding it to the database
 def createQualification(request):
 
-    form = qualificationForm()
     # Checking if the form is POST
     if request.method == 'POST':
-        print('Printing POST:', request.POST)
         form = qualificationForm(request.POST)
+        print('Printing POST:', request.POST)
+
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
+            data.title = request.POST["title"].title()
+            data.from_where = request.POST["from_where"].title()
+            data.save()
             return redirect('/create_entry/')
+    else:
+        form = qualificationForm()
 
     context = {'form': form}
     return render(request, 'create/create_qualification.html', context)
@@ -151,12 +165,18 @@ def updateQualification(request, pk):
 
     # Checking if the form is POST
     if request.method == 'POST':
-        print('Updating POST:', request.POST)
         form = qualificationForm(request.POST, instance=qualification)
+        print('Updating POST:', request.POST)
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
+            data.title = request.POST["title"].title()
+            data.from_where = request.POST["from_where"].title()
+            data.save()
             return redirect('/amend_qualification/')
+    else:
+        data = qualificationForm()
 
     context = {'form': form}
     return render(request, 'update/update_qualification.html', context)
@@ -181,16 +201,22 @@ def deleteQaulification(request, pk):
 # view to create project and adding it to the database
 def createProject(request):
 
-    form = projectForm()
     # Checking if the form method is POST
     if request.method == 'POST':
-        print('Printing POST:', request.POST)
         # request.files is take the URL of the file and post it in Django
         form = projectForm(request.POST, request.FILES)
+        print('Printing POST:', request.POST)
+
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
+            data.title = request.POST["title"].title()
+            data.description = request.POST["title"].capitalize()
+            data.save()
             return redirect('/create_entry/')
+    else:
+        form = projectForm()
 
     context = {'form': form}
     return render(request, 'create/create_project.html', context)
@@ -222,8 +248,13 @@ def updateMainPicture(request, pk):
             request.POST, request.FILES, instance=mainpicture)
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
+            data.title = request.POST["title"].title()
+            data.save()
             return redirect('/amend_mainpicture/')
+    else:
+        data = mainpictureForm()
 
     context = {'form': form}
     return render(request, 'update/update_mainpicture.html', context)
@@ -256,8 +287,13 @@ def updateAboutPicture(request, pk):
             request.POST, request.FILES, instance=aboutpicture)
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
+            data.title = request.POST["title"].title()
+            data.save()
             return redirect('/amend_aboutpicture/')
+    else:
+        data = aboutpictureForm()
 
     context = {'form': form}
     return render(request, 'update/update_aboutpicture.html', context)
@@ -289,8 +325,13 @@ def updateMyCV(request, pk):
         form = MyCVForm(request.POST, request.FILES, instance=mycv)
         # Checking if the form is valid before saving it and posting to the django
         if form.is_valid():
-            form.save()
+            data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
+            data.title = request.POST["title"].title()
+            data.save()
             return redirect('/amend_cv/')
+    else:
+        data = MyCVForm()
 
     context = {'form': form}
     return render(request, 'update/update_cv.html', context)
