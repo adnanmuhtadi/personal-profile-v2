@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('portfolio.urls')),
     path('blog/', include('blog.urls')),
-    path('static/<path:path>/', serve, {'document_root': settings.STATIC_ROOT, }),
-    path('media/<path:path>/', serve, {'document_root': settings.MEDIA_ROOT, }),
+    path(r'^static/(?P<path>.*)$', serve,
+         {'document_root': settings.STATIC_ROOT}),
+    path(r'^media/(?P<path>.*)$', serve,
+         {'document_root': settings.MEDIA_ROOT}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
