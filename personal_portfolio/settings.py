@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
+import environ
+
+# This initialise the environment variables
+# which I have set as myenv
+myenv = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +27,29 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b%uhnrh&(2f*8u!*@yiwxr0)!m_z6$@_@uh($di*z==+5uo0)e'
+# SECURITY WARNING: keep the secret key used in production secret! - IFTI
+if 'SECRET_KEY' in os.environ:
+    # Deployed env secret key
+    SECRET_KEY = os.getenv("SECRET_KEY")
+else:
+    # Development env secret key
+    SECRET_KEY = myenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production! - IFTI
+if 'DEBUG' in os.environ:
+    # Status Deployed
+    DEBUG = False
+else:
+    # Status Development
+    DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# IFTI
+if 'RENDER_HOSTNAME' in os.environ:
+    # Deployment
+    ALLOWED_HOSTS = [os.environ.get('RENDER_HOSTNAME')]
+else:
+    # Development
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -84,12 +107,23 @@ WSGI_APPLICATION = 'personal_portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Database if statement to check environment variables - IFTI
+if 'DEBUG' in os.environ:
+    # Deployed environment variable
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    # Development environment variable
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+
+
 
 
 # Password validation

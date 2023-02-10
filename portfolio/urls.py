@@ -22,7 +22,7 @@ urlpatterns = [
     path('amend_experience/', views.amendExperience, name="amend_experience"),
     path('amend_qualification/', views.amendQualification,
          name="amend_qualification"),
-
+    path('amend_project/', views.amendProject, name="amend_project"),
     path('amend_mainpicture/', views.amendMainPicture, name="amend_mainpicture"),
     path('amend_aboutpicture/', views.amendAboutPicture, name="amend_aboutpicture"),
     path('amend_cv/', views.amendMyCV, name="amend_cv"),
@@ -33,7 +33,8 @@ urlpatterns = [
          views.updateExperience, name="update_experience"),
     path('update_qualification/<str:pk>/',
          views.updateQualification, name="update_qualification"),
-
+    path('update_project/<str:pk>/',
+         views.updateProject, name="update_project"),
     path('update_mainpicture/<str:pk>/',
          views.updateMainPicture, name="update_mainpicture"),
     path('update_aboutpicture/<str:pk>/',
@@ -46,4 +47,6 @@ urlpatterns = [
          views.deleteExperience, name="delete_experience"),
     path('delete_qualification/<str:pk>/',
          views.deleteQaulification, name="delete_qualification"),
+    path('delete_project/<str:pk>/',
+         views.deleteProject, name="delete_project"),
 ]

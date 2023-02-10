@@ -54,6 +54,28 @@
         align-content: flex-end;
     }
 
+    .home_container_admin{
+    position: relative;
+    height: calc(100vh - var(--header-height));
+    grid-template-rows: repeat(2, max-content);
+    align-content: space-around;
+    row-gap: 2rem;
+    margin-bottom: 20px;
+    }
+
+    .home-admin {
+    margin-top: inherit;
+    height: 425px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+    .admin-title{
+    margin: auto;
+    color: var(--text-color-rev);
+    padding-top: 1rem;
+}
+
     .home_greeting{
         font-size: 1.25rem;
     }

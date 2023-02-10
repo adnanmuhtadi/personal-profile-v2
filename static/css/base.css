@@ -337,29 +337,11 @@ img{
     line-height: normal;
 }
 
-.home_container_admin{
-    position: relative;
-    height: calc(100vh - var(--header-height));
-    grid-template-rows: repeat(2, max-content);
-    align-content: space-around;
-    row-gap: 2rem;
-    margin: 5rem 1rem;
-}
-
 .home_data{
     border-left: 4px solid var(--first-color-gold);
     color: var(--text-color-rev);
     padding-left: 1.5rem;
     z-index: var(--z-tooltip);
-}
-
-.home_data-admin{
-    border-left: 4px solid var(--first-color-gold);
-    color: var(--text-color-rev);
-    padding-left: 1.5rem;
-    z-index: var(--z-tooltip);
-    overflow-x: hidden;
-    height: auto;
 }
 
 .home_name{
@@ -442,15 +424,8 @@ img{
     text-decoration: none;
 }
 
-.button-admin{
-    display: inline-block;
-    background-color: var(--first-color-gold);
-    color:var(--first-color-lighten);
-    padding: .75rem 1rem;
-    border-radius: 25px;
-    transition: .3s;
-    text-decoration: none;
-    margin: 15px 0;
+.button-over{
+    margin-bottom: auto;
 }
 
 button{
@@ -547,14 +522,6 @@ button{
 .qualification_work{
     font-size: var(--smaller-font-size);
     color: var(--first-color-light);
-}
-
-.qualification_area-admin,
-.qualification_icon-admin,
-.qualification_work-admin{
-    margin-bottom: var(--mb-1);
-    font-size: var(--smaller-font-size);
-    color: var(--text-color-rev);
 }
 
 .qualification_work{

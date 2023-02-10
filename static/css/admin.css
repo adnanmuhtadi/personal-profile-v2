@@ -1,0 +1,62 @@
+.admin-title{
+    margin: auto;
+    color: var(--text-color-rev);
+    padding-top: 1rem;
+}
+
+.button-admin{
+    display: inline-block;
+    background-color: var(--first-color-gold);
+    color:var(--first-color-lighten);
+    padding: .75rem 1rem;
+    border-radius: 25px;
+    transition: .3s;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.home_container_admin{
+    position: relative;
+    height: calc(100vh - var(--header-height));
+    grid-template-rows: repeat(2, max-content);
+    align-content: space-around;
+    row-gap: 2rem;
+    margin-bottom: 20px;
+}
+
+.home-admin {
+    margin-top: inherit;
+    height: 425px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.home-admin section {
+    scroll-snap-align: middle;
+}
+
+.home_data-admin{
+    border-left: 4px solid var(--first-color-gold);
+    color: var(--text-color-rev);
+    padding-left: 1.5rem;
+    z-index: var(--z-tooltip);
+    overflow-x: hidden;
+    height: auto;
+}
+
+.qualification_area-admin,
+.qualification_icon-admin,
+.qualification_work-admin{
+    margin-bottom: var(--mb-1);
+    color: var(--text-color-rev);
+}
+
+.qualification_area-admin{
+    font-size: var(--normal-font-size);
+}
+
+.qualification_icon-admin,
+.qualification_work-admin{
+    font-size: var(--smaller-font-size);
+}
+

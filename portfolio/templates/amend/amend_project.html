@@ -5,24 +5,47 @@
 {% block content %}
 
 <section class="home" id="home">
-    <div class="home_container bd-container bd-grid">
-        <div class="home_data">
 
-            <h1>Amend Project</h1>
+    <div class="home_container_admin bd-container bd-grid">
+        <h1 class="admin-title">Amend Project</h1>
+        <div class="home-admin">
+            <div class="home_data-admin">
 
-            <form action="" method="POST">
-                {% for project in projects %}
-                <div class="qualification_data" data-aos="fade-up">
-                    <h3 class="qualification_area">{{ project.title }}</h3>
+                <form action="" method="POST">
+                    <!-- for loop to go through the experiences the list -->
+                    {% for project in projects %}
+                    <div class="row">
+                        <div class="qualification_data">
+                            <!-- to display the title -->
+                            <h3 class="qualification_area-admin mt-3">{{ project.title }}</h3>
 
+                            <div class="qualification_box">
+                                <!-- to display the name of the companies and location-->
+                                <span class="qualification_work-admin col">
+                                    <i class="bx bx-briefcase-alt qualification_icon-admin"></i>
+                                    {{ project.meta_type }} - {{ project.type }} - {{ project.description }}
+                                </span>
 
-                </div>
-                {% endfor %}
-            </form>
+                                <br>
 
+                                <!-- Amend and Delete options -->
+                                <a href="{% url 'update_project' project.id %}"
+                                    class="button button-light button-more col-6 me-2">Amend</a>
+
+                                <a href="{% url 'delete_project' project.id %}"
+                                    class="button button-light button-more col-6">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </form>
+            </div>
         </div>
-        <a href="{% url 'amend_entry' %}" class="button button-light button-more">Back to Amend
+
+        <!-- gets redirected to the amend entry page-->
+        <a href="{% url 'amend_entry' %}" class="button-over button button-light button-more col">Back to Amend
             Entry</a>
+
     </div>
 </section>
 

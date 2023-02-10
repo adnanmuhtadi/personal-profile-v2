@@ -16,9 +16,9 @@ def home(request):
     mycvs = MyCV.objects.all()
 
     context = {
+        'experiences': experiences,
         'qualifications': qualifications,
         'projects': projects,
-        'experiences': experiences,
         'mainpictures': mainpictures,
         'aboutpictures': aboutpictures,
         'mycvs': mycvs,
@@ -220,6 +220,55 @@ def createProject(request):
 
     context = {'form': form}
     return render(request, 'create/create_project.html', context)
+
+
+# view to the Amend Experiences
+def amendProject(request):
+    # Displaying all the option in the list
+    projects = Project.objects.all()
+    context = {
+        'projects': projects,
+    }
+    return render(request, 'amend/amend_project.html', context)
+
+
+# update the qualifications
+def updateProject(request, pk):
+
+    # Setting the Id for each object pk
+    project = Project.objects.get(id=pk)
+    form = projectForm(instance=project)
+
+    # Checking if the form is POST
+    if request.method == 'POST':
+        form = projectForm(request.POST, instance=project)
+        print('Updating POST:', request.POST)
+        # Checking if the form is valid before saving it and posting to the django
+        if form.is_valid():
+            data = form.save(commit=False)
+            # adding .title() at the end of each data field to define how it will be posted.
+            data.title = request.POST["title"].title()
+            data.save()
+            return redirect('/amend_project/')
+    else:
+        data = projectForm()
+
+    context = {'form': form}
+    return render(request, 'update/update_project.html', context)
+
+
+# Function to delete qualifications
+def deleteProject(request, pk):
+
+    # Setting the ID for each object pk
+    project = Project.objects.get(id=pk)
+    # Checking if the form is POST
+    if request.method == "POST":
+        project.delete()
+        return redirect('/amend_project/')
+
+    context = {'item': project}
+    return render(request, 'delete/delete_project.html', context)
 
 
 ###############################################################
