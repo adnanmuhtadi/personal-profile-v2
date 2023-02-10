@@ -310,7 +310,7 @@ img{
     position: relative;
     display: flex;
     align-items: flex-end;
-    background-image: url('/media/images/top-banner-bckg.jpg');
+    background-image: url('/static/images/top-banner-bckg.jpg');
     background-position: center;
     background-size: cover;
     opacity: 0.9;
