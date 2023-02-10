@@ -69,14 +69,15 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+        # This is for Render, so that images can be seen
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # This is for Render, so that images can be seen
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+
 ]
 
 ROOT_URLCONF = 'personal_portfolio.urls'
@@ -161,12 +162,11 @@ USE_TZ = True
 # This if block is for the static file
 if 'DEBUG' in os.environ:
     # Deployed environment variable
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     
     # This is for whitenoise to render images once deployed to Render
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 else:
     # Development environment variable
     STATIC_URL = '/static/'
